@@ -18,4 +18,10 @@ abstract class TestCase extends BaseTestCase
         $user = $school->addManager($user_data);
         return $user;
     }
+
+    public function setUp() : void
+    {
+        parent::setUp();
+        $this->seed();
+    }
 }
