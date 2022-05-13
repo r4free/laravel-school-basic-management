@@ -14,12 +14,9 @@ class HomeTest extends TestCase
    
     public function test_acceses_logged_user_home_page()
     {
-        $school = School::factory()->create();
-        $user_data = User::factory()->make()->toArray();
-        $user_data['password'] = 123123;
-        $user = $school->addManager($user_data);
-
-        $response = $this->actingAs($user)->get(route('admin.home'));
+        $manager = $this->createUserManager();
+        
+        $response = $this->actingAs($manager)->get(route('admin.home'));
 
         $response->assertStatus(200);
     }
