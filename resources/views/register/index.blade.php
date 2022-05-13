@@ -16,7 +16,6 @@
         <div class="col-xl-8 mx-auto">
           <div class="card z-index-0">
             <div class="card-header text-center pt-4">
-              <h5>Register with</h5>
             </div>
             <div class="card-body">
                 @include('register.form')
