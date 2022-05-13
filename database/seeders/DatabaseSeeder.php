@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             RolesSeeder::class,
             SchoolsTableSeeder::class,
             StudentsTableSeeder::class,
+            ManagerTableSeeder::class,
             GradesTableSeeder::class,
             GroupsTableSeeder::class,
         ]);
