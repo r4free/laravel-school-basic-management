@@ -27,7 +27,7 @@ Route::group([
         'prefix' => 'groups',
         'as' => 'groups.'
     ],function(){
-        Route::get('/',[GroupController::class, 'index'])->name('index');
+        Route::resource('/', GroupController::class)->only('create','store','index');
     });
 });
 

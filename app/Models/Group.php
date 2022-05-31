@@ -9,10 +9,20 @@ class Group extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['name','school_id','grade_id'];
+    protected $fillable = ['name','school_id','grade_id', 'shift'];
 
     public function grade()
     {
-        $this->belongsTo(Grade::class);
+        return $this->belongsTo(Grade::class);
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        parent::creating(function($model){
+            $model->school_id = auth()->user()->school_id;
+        });
+
     }
 }
