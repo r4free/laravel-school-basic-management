@@ -1,11 +1,15 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <form role="form" method="POST" action="{{ route('admin.groups.store') }}">
+            <form role="form" method="POST" action="{{ isset($group) ? route('admin.groups.update', $group->id) : route('admin.groups.store') }}">
                 @csrf
+                
+                @isset($group)
+                    @method('put')
+                @endisset
 
                 <div class="mb-3">
-                    <input value="" name="name" class="form-control form-control-lg" placeholder="Nome" aria-label="Nome">
+                    <input value="@isset($group) {{ $group->name }} @endisset" name="name" class="form-control form-control-lg" placeholder="Nome" aria-label="Nome">
                 </div>
 
                 <div class="form-group">
@@ -29,6 +33,7 @@
                     </select>
                 </div>
                 <div class="text-center">
+                    <a class="btn  btn-warning btn-lg mt-4 mb-0" href="{{ route('admin.groups.index') }}"> Cancelar</a>
                     <button type="submit" class="btn  btn-primary btn-lg mt-4 mb-0">Salvar</button>
                 </div>
             </form>

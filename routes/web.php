@@ -23,12 +23,7 @@ Route::group([
     ],function(){
         Route::get('/',[StudentsController::class, 'index'])->name('index');
     });
-    Route::group([
-        'prefix' => 'groups',
-        'as' => 'groups.'
-    ],function(){
-        Route::resource('/', GroupController::class)->only('create','store','index');
-    });
+    Route::resource('groups', GroupController::class)->only('create','store','index','edit','update');
 });
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');

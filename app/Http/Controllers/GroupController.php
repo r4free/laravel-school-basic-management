@@ -12,7 +12,7 @@ class GroupController extends Controller
 
     public function __construct(Group $group)
     {
-        $this->group = $group->orderBy('updated_at',);
+        $this->group = $group->orderBy('updated_at','desc');
     }
 
     public function index()
@@ -26,6 +26,21 @@ class GroupController extends Controller
     public function create()
     {
         return view('pages.group.create');
+    }
+
+    public function edit($id)
+    {
+        return view('pages.group.edit')
+        ->with([
+            'group' => $this->group->findOrFail($id)
+        ]);
+    }
+   
+    public function update(Request $request, $id)
+    {
+        $group = $this->group->findOrFail($id);
+        $group->update($request->only('name','grade_id','shift'));
+        return redirect()->route('admin.groups.index');
     }
 
     public function store(RegisterGroupRequest $request)

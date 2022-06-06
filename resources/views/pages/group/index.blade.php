@@ -15,7 +15,6 @@
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Turma</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Série</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Série</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Cadastrado em</th>
                       <th class="text-secondary opacity-7"></th>
                     </tr>
@@ -37,15 +36,14 @@
                       <td>
                         <p class="text-xs font-weight-bold mb-0">{{$group->grade->name}}</p>
                       </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
-                      </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                        <span class="text-secondary text-xs font-weight-bold">
+                          {{ $group->created_at }}
+                        </span>
                       </td>
                       <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
+                        <a href="{{ route('admin.groups.edit', $group->id) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          Editar
                         </a>
                       </td>
                     </tr>
