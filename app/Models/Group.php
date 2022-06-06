@@ -19,10 +19,10 @@ class Group extends Model
     public static function boot()
     {
         parent::boot();
-
-        parent::creating(function($model){
-            $model->school_id = auth()->user()->school_id;
+        static::creating(function($model) {
+            if(\Auth::check())
+                $model->school_id = \Auth::user()->school_id;
         });
-
     }
+    
 }

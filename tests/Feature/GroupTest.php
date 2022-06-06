@@ -21,7 +21,6 @@ class GroupTest extends TestCase
     public function test_user_can_create_a_group()
     {
         $manager = $this->createUserManager();
-        
         $response = $this->actingAs($manager)
         ->post(route('admin.groups.store'), [
             "name" => $this->faker->name,
@@ -29,6 +28,7 @@ class GroupTest extends TestCase
             "grade_id" => Grade::first()->id,
         ]);
         $response->assertStatus(200);
+    
     }
     
     public function test_user_can_access_create_group_page()
