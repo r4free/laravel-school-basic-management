@@ -21,4 +21,20 @@ class StudentsController extends Controller
           'students' => $this->student->paginate(10)
         ]);
     }
+
+    public function edit($id)
+    {
+        return view('pages.student.edit')
+        ->with([
+            'student' => $this->student->findOrFail($id)
+        ]);
+    }
+    
+    public function update(Request $request, $id)
+    {
+        $student= $this->student->findOrFail($id);
+        $student->update($request->only('name','email'));
+        $student->groups()->attach($request->group_id);
+        return redirect()->route('admin.students.index');
+    }
 }

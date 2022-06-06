@@ -14,7 +14,6 @@
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aluno</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Turma</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Série</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Cadastrado em</th>
                       <th class="text-secondary opacity-7"></th>
                     </tr>
@@ -34,18 +33,22 @@
                         </div>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0">Manager</p>
-                        <p class="text-xs text-secondary mb-0">Organization</p>
+                        @if($student->groups->count())
+                          <p class="text-xs font-weight-bold mb-0">{{ $student->group->name }}</p>
+                          <p class="text-xs text-secondary mb-0">{{ $student->group->grade->name }}</p>
+                        @else
+                          Aluno sem turma vinculada
+                        @endif
                       </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
-                      </td>
+                      
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                        <span class="text-secondary text-xs font-weight-bold">
+                        {{ $student->created_at }}
+                        </span>
                       </td>
                       <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
+                        <a href="{{ route('admin.students.edit', $student->id) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Editar aluno">
+                          Editar
                         </a>
                       </td>
                     </tr>
