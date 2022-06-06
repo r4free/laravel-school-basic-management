@@ -10,9 +10,9 @@ abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
 
-    protected function createUserManager() : User
+    protected function createUserManager(School $school = null) : User
     {
-        $school = School::factory()->create();
+        $school = $school ? $school : School::factory()->create();
         $user_data = User::factory()->make()->toArray();
         $user_data['password'] = 123123;
         $user = $school->addManager($user_data);
