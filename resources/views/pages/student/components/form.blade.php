@@ -18,10 +18,9 @@
                 <div class="form-student">
                     <label for="exampleFormControlSelect1">Turma</label>
 
-                    <select class="form-control" name="group_id">
-                        @inject("groups", "\App\Models\Group")
-                        @foreach ($groups->all() as $group )
-                        <option value="{{$group->id}}">{{$group->name}}</option>
+                    <select class="form-control" name="group_id" selected="selected" value="{{isset($student) ? $student->group->id : $groups->first()->id }}">
+                        @foreach ($groups as $group )
+                            <option value="{{$group->id}}">{{$group->name}}</option>
                         @endforeach
                     </select>
                 </div>

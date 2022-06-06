@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends User
 {
     protected $table = 'users';
+
+    const ROLE_ID = 1;
     
     protected static function boot()
     {
@@ -18,6 +20,13 @@ class Student extends User
         static::addGlobalScope(function (Builder $builder) {
             $builder->where('role_id', 1);
         });
+
+        static::creating(function($model){
+            $model->role_id = self::ROLE_ID;
+            if(\Auth::check())
+                $model->school_id = \Auth::user()->school_id;
+        });
+
     }
 
     protected static function booted()

@@ -16,7 +16,7 @@ Route::group([
     Route::get('/',[HomeController::class, 'index'])->name('home');
 
     Route::get('logout',LogoutController::class)->name('logout');
-    Route::resource('students', StudentsController::class)->only('index','edit','update');
+    Route::resource('students', StudentsController::class)->only('index','edit','update','store','create');
     Route::resource('groups', GroupController::class)->only('create','store','index','edit','update');
 });
 

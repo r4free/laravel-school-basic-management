@@ -4,8 +4,9 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-            <div class="card-header pb-0">
-              <h6>Authors table</h6>
+            <div class="card-header pb-0 d-flex justify-content-between">
+              <h6>Listagem de alunos</h6>
+              <a class="btn btn-primary btn-sm mb-0 " href="{{route('admin.students.create')}}" type="button">Novo aluno(a)</a>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
