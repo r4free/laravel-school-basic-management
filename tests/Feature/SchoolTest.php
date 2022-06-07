@@ -29,5 +29,21 @@ class SchoolTest extends TestCase
         ->assertViewHas("school", $school);
     
     }
+
+
+    public function test_a_superadmin_can_update_school()
+    {
+        $superadmin = $this->createSuperAdmin();
+        $response = $this->actingAs($superadmin);
+        $school = School::first();
+        $response = $response->put(route('admin.schools.update',  $school->id),[
+            "name" => $school->name . " edited",
+        ]);
+
+        $response->assertRedirect(route('admin.schools.index'));
+    
+    }
+
+    
     
 }
