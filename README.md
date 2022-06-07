@@ -7,58 +7,90 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+A aplicação utiliza docker para ambiente de desenvolvimento com o pacote do Laravel sail 
+ao clonar a aplicação execute o comando 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+`docker run --rm \ 
+    -u "$(id -u):$(id -g)" \
+    -v $(pwd):/var/www/html \
+    -w /var/www/html \
+    laravelsail/php81-composer:latest \
+    composer install --ignore-platform-reqs
+` para poder instalar as dependencias do composer, após isso é possível subir os container com o comando `./vendor/bin/sail up -d` ( consultar documentação do laravel sail)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+De ínicio foi usado o template argon dashboard 2 ( https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html) para os estilos.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+O projeto foi desenvolvido apenas para fazer um benchmark do teste avaliativo para vaga de programador usando recursos básicos do framework laravel e teve um total de tempo gasto de 8.5 horas total incluindo testes de feature, modelagem e não foi usado qualquer pacote para o desenvolvimente além dos fornecidos pelo framework.
+https://nutritious-felidae-cd4.notion.site/Backend-Teste-para-candidatos-vaga-d07a44070a214f4ca06764b2ca9977fd
 
-## Learning Laravel
+O teste pedia:
+# Regras
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Prazo de sete dias corridos a partir do envio do teste. Após o término do prazo, pode-se submeter o código **mesmo que incompleto**.
+- O sistema deve ser feito utilizando utilizando o framework PHP Laravel (versão 5+) e com o banco de dados MySQL.
+- O código deve estar disponível no GitHub, Gitlab ou Bitbucket.
+- Deve ter o “Readme” com as instruções.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# Diferenciais
 
-## Laravel Sponsors
+- Implementar a camada de Front-End utilizando a biblioteca javascript Bootstrap e ser responsiva.
+- Uso de Vue.js.
+- API Rest JSON para todos os CRUDS.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+# **Instruções**
 
-### Premium Partners
+Desenvolver um sistema de controle de alunos de uma escola. O sistema deverá conter as seguintes funcionalidades:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Cadastro de alunos
 
-## Contributing
+- Deve ter a listagem com busca, cadastro, edição e exclusão de aluno.
+- Campos: ID, nome, telefone, e-mail, data de nascimento e gênero.
+- Campos obrigatórios: Nome e E-mail.
+- Um aluno pode estar ligado a muitas turmas.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Cadastro de turmas
 
-## Code of Conduct
+- Deve ter a listagem com busca, cadastro, edição e exclusão das turmas.
+- Campos: Ano, nível de ensino (fundamental, médio), série e turno.
+- Uma turma deve estar ligada a uma escola.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Cadastro de escolas
 
-## Security Vulnerabilities
+- Deve ter a listagem com busca, cadastro, edição e exclusão da escola.
+- Campos: ID, nome da escola, endereço.
+- Campos obrigatórios: Nome e Endereço.
+- Uma escola deve:
+    - Ter várias turmas.
+    - Exibir o total de alunos.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## **Tabelas necessárias:**
 
-## License
+- Alunos
+- Turmas
+- Escolas
+- Alunos de Turmas
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Além disso, a implementação deste modelo em um banco de dados relacional deve ser realizada levando em consideração os seguintes requisitos:
+
+- O banco de dados deve ser criado utilizando Migrations do framework Laravel, e também utilizar Seeds e Factorys para popular as informações no banco de dados.
+- Implementação das validações necessárias na camada que julgar melhor.
+
+## **Tecnologias a serem utilizadas**
+
+Devem ser utilizadas as seguintes tecnologias:
+
+- HTML
+- CSS
+- Javascript
+- Framework Laravel (PHP)
+
+### **Boa sorte!**
+
+### **Finalizando**
+
+- Suba a sua proposta para o projeto que você criou no GitHub, Gitlab ou Bitbucket. Exemplo: [https://github.com/seuNome](https://github.com/seuNome);
+- Envie-nos o link do seu projeto no prazo de até 7 dias. Exemplo: [https://github.com/seuNome/test-BackEnd.git](https://github.com/seuNome/test-frontEnd.git)
+- Aguarde o contato.
+
+
+
