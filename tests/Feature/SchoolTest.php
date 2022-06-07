@@ -63,5 +63,12 @@ class SchoolTest extends TestCase
         ]);
         $response->assertRedirect();
     }
+
+    public function test_a_non_superadmin_cant_see_school_list()
+    {
+        $manager = $this->createUserManager();
+        $response = $this->actingAs($manager)->get(route('admin.schools.index'));
+        $response->assertForbidden();
+    }
     
 }
