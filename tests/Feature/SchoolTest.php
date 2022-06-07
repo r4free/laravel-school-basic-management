@@ -71,4 +71,27 @@ class SchoolTest extends TestCase
         $response->assertForbidden();
     }
     
+
+    public function test_a_manager_cant_edit_others_schools()
+    {
+        $manager = $this->createUserManager();
+        $response = $this->actingAs($manager);
+        $school = School::factory()->create();
+        $response = $response->get(route('admin.schools.edit',  $school->id));
+        $response->assertNotFound();
+    }
+    
+    public function test_a_manager_cant_update_others_schools()
+    {
+        $manager = $this->createUserManager();
+        $response = $this->actingAs($manager);
+        $school = School::factory()->create();
+        $response = $response->put(route('admin.schools.update',  $school->id),[
+            "name" => $this->faker->name,
+            "address" => $school->address,
+        ]);
+        $response->assertNotFound();
+    }
+    
+    
 }
