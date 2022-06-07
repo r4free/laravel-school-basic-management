@@ -18,7 +18,7 @@
                 <div class="form-student">
                     <label for="exampleFormControlSelect1">Turma</label>
 
-                    <select class="form-control" name="group_id" selected="selected" value="{{isset($student) ? $student->group->id : $groups->first()->id }}">
+                    <select class="form-control" name="group_id" selected="selected" value="{{isset($student) && $student->group ? $student->group->id : $groups->first()->id }}">
                         @foreach ($groups as $group )
                             <option value="{{$group->id}}">{{$group->name}}</option>
                         @endforeach
