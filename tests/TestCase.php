@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use App\Models\Role;
 use App\Models\School;
 use App\Models\User;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
@@ -17,6 +18,13 @@ abstract class TestCase extends BaseTestCase
         $user_data['password'] = 123123;
         $user = $school->addManager($user_data);
         return $user;
+    }
+    
+    protected function createSuperAdmin() : User
+    {
+        return User::factory()->create([
+            'role_id' => 3
+        ]);
     }
 
     public function setUp() : void
