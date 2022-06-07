@@ -5,6 +5,7 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\StudentsController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,7 @@ Route::group([
     Route::get('logout',LogoutController::class)->name('logout');
     Route::resource('students', StudentsController::class)->only('index','edit','update','store','create');
     Route::resource('groups', GroupController::class)->only('create','store','index','edit','update');
+    Route::resource('schools', SchoolController::class)->only('create','store','index','edit','update');
 });
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
