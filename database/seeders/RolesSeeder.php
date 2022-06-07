@@ -21,7 +21,12 @@ class RolesSeeder extends Seeder
                 'name' => 'Aluno',
             ],
             [
+                'id' => 2,
                 "name" => 'gestor'
+            ],
+            [
+                "id" => 3,
+                "name" => 'Superadmin'
             ]
         ];
 
