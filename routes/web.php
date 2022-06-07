@@ -19,7 +19,10 @@ Route::group([
     Route::get('logout',LogoutController::class)->name('logout');
     Route::resource('students', StudentsController::class)->only('index','edit','update','store','create');
     Route::resource('groups', GroupController::class)->only('create','store','index','edit','update');
-    Route::resource('schools', SchoolController::class)->only('create','store','index','edit','update');
+   
+    Route::resource('schools', SchoolController::class)->only('create','store','edit','update');
+    Route::get('schools', [SchoolController::class,'index'])->name('schools.index')->middleware('should_be_superadmin');
+    
 });
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
