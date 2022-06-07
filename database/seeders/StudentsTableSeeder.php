@@ -17,7 +17,7 @@ class StudentsTableSeeder extends Seeder
     public function run()
     {
         School::get()->each(function($school){
-            Student::factory()->count(30)
+            Student::factory()->count(15)
             ->create([
                 'school_id' => $school->id
             ]);

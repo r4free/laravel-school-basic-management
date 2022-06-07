@@ -53,4 +53,15 @@ class SchoolTest extends TestCase
         ->assertViewIs('pages.school.create');
     }
     
+    public function test_superadmin_can_create_school()
+    {
+        $superadmin = $this->createSuperAdmin();
+        $response = $this->actingAs($superadmin)
+        ->post(route('admin.schools.store'),[
+            "name" => $this->faker->name,
+            "address" => $this->faker->address
+        ]);
+        $response->assertRedirect();
+    }
+    
 }
