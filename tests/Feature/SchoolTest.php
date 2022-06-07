@@ -44,6 +44,13 @@ class SchoolTest extends TestCase
     
     }
 
-    
+    public function test_user_can_access_create_school_page()
+    {
+        $superadmin = $this->createSuperAdmin();
+        $response = $this->actingAs($superadmin)
+        ->get(route('admin.schools.create'));
+        $response->assertStatus(200)
+        ->assertViewIs('pages.school.create');
+    }
     
 }
