@@ -51,4 +51,10 @@ class User extends Authenticatable
             $model->password = bcrypt($model->password);
         });
     }
+
+    public function getIsSuperAdmin()
+    {
+        return $this->role_id = 3;
+    }
 }
+
